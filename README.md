@@ -1,2 +1,2 @@
-# Fatnasy_League
+# Fantasy_League
 Szerver oldali JS házi feladat
