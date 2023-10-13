@@ -1,0 +1,79 @@
+Fantasy league
+- index.html 			- kilistázza az összes csapatot amely szerepel a bajnokságban
+						- van edit, delete, új csapat felvétele és rá lehet kattintani az adott csapatra
+- teamview.html 		- egy adott csapatban listázza ki a játékosokat
+						- van edit, delete és új játékos felvétele a csapatba
+- edit_team.html		- egy adott csapat adatainak szerkesztése (illetve új felvétele)
+						- van save, cancel
+- edit_player.html		- egy adott játékos adatainak szerkesztése(illetve új felvétele)
+						- van save, cancel
+						
+Routing
+
+renderMW.js
+
+middleware/team/
+	getTeamListMW.js
+	getTeamMW.js
+	saveTeamMW.js
+	delTeamMW.js
+
+middleware/player/
+	getPlayerListMW.js
+	getPlayerMW.js
+	savePlayerMW.js
+	delPlayerMW.js
+
+GET /
+	getTeamListMW
+	renderMW(index.html)
+
+GET, POST /new
+	getTeamMW
+	saveTeamMW
+	renderMW(edit_team.html (new))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
+	
+GET, POST /edit/:teamid		-edit_team (edit)
+	getTeamMW
+	saveTeamMW
+	renderMW(edit_team.html (edit))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
+		
+GET /del/:teamid
+	getTeamMW
+	delTeamMW
+	renderMW(edit_team.html (edit))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
+	
+GET /team/:teamid
+	getTeamMW
+	getPlayerListMW
+	renderMW(teamview.html)
+
+GET, POST /team/:teamid/new
+	getTeamMW
+	getPlayerMW
+	savePlayerMW
+	renderMW(edit_player.html (new))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
+
+GET, POST /team/:teamid/edit/:playerid
+	getTeamMW
+	getPlayerMW
+	savePlayerMW
+	renderMW(edit_player.html (edit))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
+
+GET /team/:teamid/del/:playerid
+	getTeamMW
+	getPlayerMW
+	delPlayerMW
+	renderMW(edit_player.html (edit))
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+		- ha nem, akkor nem
