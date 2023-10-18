@@ -1,0 +1,28 @@
+<%- include('header', {pagetitle: 'Játékos módosítása'}) -%>
+<%- include('nav') -%>
+<div class="vr"></div>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="mb-3">
+            <label for="playerName" class="form-label">Név</label>
+            <input class="form-control" id="playerName">
+        </div>
+        <div class="mb-3">
+            <label for="playerPos" class="form-label">Pozíció</label>
+            <input class="form-control" id="playerPos">
+        </div>
+        <div class="mb-3">
+            <label for="playerNation" class="form-label">Nemzetiség</label>
+            <input class="form-control" id="playerNation">
+        </div>
+        <div class="mb-3">
+            <label for="playerNumber" class="form-label">Mez</label>
+            <input class="form-control" id="playerNumber">
+        </div>
+    </div>
+    <a class="btn btn-primary" href="/team/3" role="button">Mentés és vissza</a>
+    <a class="btn btn-outline-danger" href="/team/3" role="button">Vissza</a>
+</div>
+</body>
+<%- include('footer') -%>

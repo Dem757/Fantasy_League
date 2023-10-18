@@ -1,0 +1,51 @@
+<%- include('header', {pagetitle: 'Fantáziák ligája'}) -%>
+<%- include('nav') -%>
+<div class="vr"></div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="text-center">
+                    <tr>
+                        <th>Név</th>
+                        <th>Liga</th>
+                        <th>Nemzetiség</th>
+                        <th>Módosítás</th>
+                    <tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>Juventus FC</td>
+                        <td>Seria A TIM</td>
+                        <td>Olasz</td>
+                        <td class="text-center">
+                            <a href="/edit/0"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Real Madrid CF</td>
+                        <td>LaLiga Santander</td>
+                        <td>Spanyol</td>
+                        <td class="text-center">
+                            <a href="/edit/1"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                    <tr onclick="window.location='/team/3'">
+                        <td>Liverpool FC (clickable row)</td>
+                        <td>Premier League</td>
+                        <td>Angol</td>
+                        <td class="text-center">
+                            <a href="/edit/2"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('footer') -%>

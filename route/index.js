@@ -11,45 +11,46 @@ const saveTeamMW = require('../middleware/team/saveTeamMW');
 module.exports = function (app) {
     const objRepo = {};
 
-    app.get('/',
-        getTeamListMW(objRepo),
-        renderMW(objRepo, 'teamlist'));
-
     app.use('/new',
         getTeamMW(objRepo),
         saveTeamMW(objRepo),
-        renderMW(objRepo, 'teameditnew'));
+        renderMW(objRepo, 'edit_team'));
 
     app.use('/edit/:teamid',
         getTeamMW(objRepo),
         saveTeamMW(objRepo),
-        renderMW(objRepo, 'teameditnew'));
+        renderMW(objRepo, 'edit_team'));
 
     app.get('/del/:teamid',
         getTeamMW(objRepo),
         delTeamMW(objRepo),
-        renderMW(objRepo, 'teameditnew'));
-
-    app.get('/team/:teamid',
-        getTeamMW(objRepo),
-        getPlayerListMW(objRepo),
-        renderMW(objRepo, 'teamplayerlist'));
+        renderMW(objRepo, 'edit_team'));
 
     app.use('/team/:teamid/new',
         getTeamMW(objRepo),
         getPlayerMW(objRepo),
         savePlayerMW(objRepo),
-        renderMW(objRepo, 'playereditnew'))
+        renderMW(objRepo, 'edit_player'))
 
     app.use('/team/:teamid/edit/:playerid',
         getTeamMW(objRepo),
         getPlayerMW(objRepo),
         savePlayerMW(objRepo),
-        renderMW(objRepo, 'playereditnew'));
+        renderMW(objRepo, 'edit_player'));
 
     app.get('/team/:teamid/del/:playerid',
         getTeamMW(objRepo),
         getPlayerMW(objRepo),
         delPlayerMW(objRepo),
-        renderMW(objRepo, 'playereditnew'));
+        renderMW(objRepo, 'edit_player'));
+
+    app.get('/team/:teamid',
+        getTeamMW(objRepo),
+        getPlayerListMW(objRepo),
+        renderMW(objRepo, 'team_view'));
+
+    app.get('/',
+        getTeamListMW(objRepo),
+        renderMW(objRepo, 'index'));
+
 }
