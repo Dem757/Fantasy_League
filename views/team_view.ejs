@@ -1,5 +1,5 @@
 <%- include('header', {pagetitle: 'Csapat'}) -%>
-<%- include('nav') -%>
+<%- include('nav', {currentpage: 'team'}) -%>
 <div class="vr"></div>
 <body>
 <div class="container">
@@ -16,36 +16,18 @@
                 <tr>
                 </thead>
                 <tbody class="table-group-divider text-center" >
-                <tr>
-                    <td>Szoboszlai Dominik</td>
-                    <td>CM</td>
-                    <td>Magyar</td>
-                    <td>8</td>
-                    <td>
-                        <a href="/team/3/edit/0"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                        <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mohamed Salah</td>
-                    <td>RW</td>
-                    <td>Egyiptomi</td>
-                    <td>11</td>
-                    <td>
-                        <a href="/team/3/edit/1"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                        <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Darwin Núñez</td>
-                    <td>ST</td>
-                    <td>Uruguayi</td>
-                    <td>9</td>
-                    <td>
-                        <a href="/team/3/edit/2"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                        <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                    </td>
-                </tr>
+                <% playerlist.forEach(function (onePlayer) { %>
+                    <tr>
+                        <td><%= onePlayer.name %></td>
+                        <td><%= onePlayer.position %></td>
+                        <td><%= onePlayer.nation %></td>
+                        <td><%= onePlayer.number %></td>
+                        <td>
+                            <a href="/team/3/edit/<%= onePlayer._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                        </td>
+                    </tr>
+                <% }); %>
                 </tbody>
             </table>
         </div>

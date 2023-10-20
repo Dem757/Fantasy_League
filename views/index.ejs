@@ -1,5 +1,5 @@
 <%- include('header', {pagetitle: 'Fantáziák ligája'}) -%>
-<%- include('nav') -%>
+<%- include('nav', {currentpage: 'league'}) -%>
 <div class="vr"></div>
 <body>
     <div class="container">
@@ -15,33 +15,17 @@
                     <tr>
                     </thead>
                     <tbody class="table-group-divider">
-                    <tr>
-                        <td>Juventus FC</td>
-                        <td>Seria A TIM</td>
-                        <td>Olasz</td>
-                        <td class="text-center">
-                            <a href="/edit/0"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Real Madrid CF</td>
-                        <td>LaLiga Santander</td>
-                        <td>Spanyol</td>
-                        <td class="text-center">
-                            <a href="/edit/1"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                        </td>
-                    </tr>
-                    <tr onclick="window.location='/team/3'">
-                        <td>Liverpool FC (clickable row)</td>
-                        <td>Premier League</td>
-                        <td>Angol</td>
-                        <td class="text-center">
-                            <a href="/edit/2"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
-                        </td>
-                    </tr>
+                    <% teams.forEach(function (oneTeam) { %>
+                        <tr onclick="window.location='/team/<%= oneTeam._id %>'">
+                            <td><%= oneTeam.name %></td>
+                            <td><%= oneTeam.league %></td>
+                            <td><%= oneTeam.nation %></td>
+                            <td class="text-center">
+                                <a href="/edit/<%= oneTeam._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                                <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                            </td>
+                        </tr>
+                    <% }); %>
                     </tbody>
                 </table>
             </div>

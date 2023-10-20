@@ -5,14 +5,13 @@ const getPlayerMW = require('../middleware/player/getPlayerMW');
 const savePlayerMW = require('../middleware/player/savePlayerMW');
 const delTeamMW = require('../middleware/team/delTeamMW');
 const getTeamListMW = require('../middleware/team/getTeamListMW');
-const getTeamMW = require('../middleware/team/delTeamMW');
+const getTeamMW = require('../middleware/team/getTeamMW');
 const saveTeamMW = require('../middleware/team/saveTeamMW');
 
 module.exports = function (app) {
     const objRepo = {};
 
     app.use('/new',
-        getTeamMW(objRepo),
         saveTeamMW(objRepo),
         renderMW(objRepo, 'edit_team'));
 

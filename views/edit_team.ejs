@@ -1,20 +1,20 @@
 <%- include('header', {pagetitle: 'Csapat szerkesztése'}) -%>
-<%- include('nav') -%>
+<%- include('nav', {currentpage: 'league'}) -%>
 <div class="vr"></div>
 <body>
   <div class="container">
     <div class="row">
       <div class="mb-3">
         <label for="teamName" class="form-label">Név</label>
-        <input class="form-control" id="teamName">
+        <input type="text" class="form-control" id="teamName" name="name" value="<%= (typeof team === "undefined") ? '' : team.name %>">
       </div>
       <div class="mb-3">
         <label for="teamLeague" class="form-label">Liga</label>
-        <input class="form-control" id="teamLeague">
+        <input type="text" class="form-control" id="teamLeague" name="league" value="<%= (typeof team === "undefined") ? '' : team.league %>">
       </div>
       <div class="mb-3">
         <label for="teamNation" class="form-label">Nemzetiség</label>
-        <input class="form-control" id="teamNation">
+        <input type="text" class="form-control" id="teamNation" name="nation" value="<%= (typeof team === "undefined") ? '' : team.nation %>">
       </div>
     </div>
     <a class="btn btn-primary" href="/" role="button">Mentés és vissza</a>

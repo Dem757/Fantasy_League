@@ -1,24 +1,24 @@
 <%- include('header', {pagetitle: 'Játékos módosítása'}) -%>
-<%- include('nav') -%>
+<%- include('nav', {currentpage: 'team'}) -%>
 <div class="vr"></div>
 <body>
 <div class="container">
     <div class="row">
         <div class="mb-3">
             <label for="playerName" class="form-label">Név</label>
-            <input class="form-control" id="playerName">
+            <input type="text" class="form-control" id="playerName" name="name" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.name %>">
         </div>
         <div class="mb-3">
             <label for="playerPos" class="form-label">Pozíció</label>
-            <input class="form-control" id="playerPos">
+            <input type="text" class="form-control" id="playerPos" name="position" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.position %>">
         </div>
         <div class="mb-3">
             <label for="playerNation" class="form-label">Nemzetiség</label>
-            <input class="form-control" id="playerNation">
+            <input type="text" class="form-control" id="playerNation" name="nation" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.nation %>">
         </div>
         <div class="mb-3">
             <label for="playerNumber" class="form-label">Mez</label>
-            <input class="form-control" id="playerNumber">
+            <input type="text" class="form-control" id="playerNumber" name="number" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.number %>">
         </div>
     </div>
     <a class="btn btn-primary" href="/team/3" role="button">Mentés és vissza</a>
