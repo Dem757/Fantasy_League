@@ -6,13 +6,22 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const TeamModel = requireOption(objectrepository, 'TeamModel');
+
     return function (req, res, next) {
-        res.locals.team = {
-            _id: '2',
-            name: 'Liverpool FC',
-            league: 'Premier League',
-            nation: 'Angol'
-        };
-        next();
+        TeamModel.findOne({_id: req.params.teamid})
+            .then(team => {
+                if (!team) {
+                    const error = new Error('Team not found');
+                    error.status = 404;
+                    return Promise.reject(error);
+                }
+
+                res.locals.team = team;
+                return next();
+            })
+            .catch(error => {
+                return next(error);
+            });
     };
 };

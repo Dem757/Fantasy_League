@@ -6,28 +6,22 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    return function (req, res, next) {
+    const TeamModel = requireOption(objectrepository, 'TeamModel');
 
-        res.locals.teams = [
-            {
-                _id: '0',
-                name: 'Juventus FC',
-                league: 'Seria A TIM',
-                nation: 'Olasz'
-            },
-            {
-                _id: '1',
-                name: 'Real Madrid CF',
-                league: 'LaLiga Santander',
-                nation: 'Spanyol'
-            },
-            {
-                _id: '2',
-                name: 'Liverpool FC',
-                league: 'Premier League',
-                nation: 'Angol'
-            }
-        ];
-        next();
+    return function (req, res, next) {
+        try {
+            TeamModel.find({}).exec()
+                .then(teams => {
+                    res.locals.teams = teams;
+                    return next();
+                })
+                .catch(error => {
+                    console.error("Hiba", error);
+                    return next(error);
+                });
+        } catch (error) {
+            console.error("Hiba", error);
+            return next(error);
+        }
     };
 };

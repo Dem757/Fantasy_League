@@ -2,27 +2,27 @@
 <%- include('nav', {currentpage: 'team'}) -%>
 <div class="vr"></div>
 <body>
-<div class="container">
+<form class="container" method="post">
     <div class="row">
         <div class="mb-3">
-            <label for="playerName" class="form-label">Név</label>
-            <input type="text" class="form-control" id="playerName" name="name" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.name %>">
+            <label for="name" class="form-label">Név</label>
+            <input type="text" class="form-control" id="name" name="name" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.name %>">
         </div>
         <div class="mb-3">
-            <label for="playerPos" class="form-label">Pozíció</label>
-            <input type="text" class="form-control" id="playerPos" name="position" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.position %>">
+            <label for="position" class="form-label">Pozíció</label>
+            <input type="text" class="form-control" id="position" name="position" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.position %>">
         </div>
         <div class="mb-3">
-            <label for="playerNation" class="form-label">Nemzetiség</label>
-            <input type="text" class="form-control" id="playerNation" name="nation" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.nation %>">
+            <label for="nation" class="form-label">Nemzetiség</label>
+            <input type="text" class="form-control" id="nation" name="nation" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.nation %>">
         </div>
         <div class="mb-3">
-            <label for="playerNumber" class="form-label">Mez</label>
-            <input type="text" class="form-control" id="playerNumber" name="number" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.number %>">
+            <label for="number" class="form-label">Mez</label>
+            <input type="text" class="form-control" id="number" name="number" value="<%= (typeof teamplayer === "undefined") ? '' : teamplayer.number %>">
         </div>
     </div>
-    <a class="btn btn-primary" href="/team/3" role="button">Mentés és vissza</a>
-    <a class="btn btn-outline-danger" href="/team/3" role="button">Vissza</a>
-</div>
+    <input type="submit" class="btn btn-primary" value="Mentés és vissza"/>
+    <a class="btn btn-outline-danger" href="/team/<%= team._id %>" role="button">Vissza</a>
+</form>
 </body>
 <%- include('footer') -%>

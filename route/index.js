@@ -8,8 +8,14 @@ const getTeamListMW = require('../middleware/team/getTeamListMW');
 const getTeamMW = require('../middleware/team/getTeamMW');
 const saveTeamMW = require('../middleware/team/saveTeamMW');
 
+const TeamModel = require('../models/team');
+const PlayerModel = require('../models/player');
+
 module.exports = function (app) {
-    const objRepo = {};
+    const objRepo = {
+        TeamModel: TeamModel,
+        PlayerModel: PlayerModel
+    };
 
     app.use('/new',
         saveTeamMW(objRepo),
@@ -27,7 +33,6 @@ module.exports = function (app) {
 
     app.use('/team/:teamid/new',
         getTeamMW(objRepo),
-        getPlayerMW(objRepo),
         savePlayerMW(objRepo),
         renderMW(objRepo, 'edit_player'))
 

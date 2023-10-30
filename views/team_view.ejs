@@ -16,15 +16,15 @@
                 <tr>
                 </thead>
                 <tbody class="table-group-divider text-center" >
-                <% playerlist.forEach(function (onePlayer) { %>
+                <% players.forEach(function (onePlayer) { %>
                     <tr>
                         <td><%= onePlayer.name %></td>
                         <td><%= onePlayer.position %></td>
                         <td><%= onePlayer.nation %></td>
                         <td><%= onePlayer.number %></td>
                         <td>
-                            <a href="/team/3/edit/<%= onePlayer._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                            <a href="#"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                            <a href="/team/<%= team._id %>/edit/<%= onePlayer._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
+                            <a href="/team/<%= team._id %>/del/<%= onePlayer._id %>"><i class="fa-solid fa-trash" style="color: black"></i></a>
                         </td>
                     </tr>
                 <% }); %>

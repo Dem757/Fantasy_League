@@ -2,23 +2,23 @@
 <%- include('nav', {currentpage: 'league'}) -%>
 <div class="vr"></div>
 <body>
-  <div class="container">
+  <form class="container" method="post">
     <div class="row">
       <div class="mb-3">
-        <label for="teamName" class="form-label">Név</label>
-        <input type="text" class="form-control" id="teamName" name="name" value="<%= (typeof team === "undefined") ? '' : team.name %>">
+        <label for="name" class="form-label">Név</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= (typeof team === "undefined") ? '' : team.name %>">
       </div>
       <div class="mb-3">
-        <label for="teamLeague" class="form-label">Liga</label>
-        <input type="text" class="form-control" id="teamLeague" name="league" value="<%= (typeof team === "undefined") ? '' : team.league %>">
+        <label for="league" class="form-label">Liga</label>
+        <input type="text" class="form-control" id="league" name="league" value="<%= (typeof team === "undefined") ? '' : team.league %>">
       </div>
       <div class="mb-3">
-        <label for="teamNation" class="form-label">Nemzetiség</label>
-        <input type="text" class="form-control" id="teamNation" name="nation" value="<%= (typeof team === "undefined") ? '' : team.nation %>">
+        <label for="nation" class="form-label">Nemzetiség</label>
+        <input type="text" class="form-control" id="nation" name="nation" value="<%= (typeof team === "undefined") ? '' : team.nation %>">
       </div>
     </div>
-    <a class="btn btn-primary" href="/" role="button">Mentés és vissza</a>
+    <input type="submit" class="btn btn-primary" value="Mentés és vissza"/>
     <a class="btn btn-outline-danger" href="/" role="button">Vissza</a>
-  </div>
+  </form>
 </body>
 <%- include('footer') -%>

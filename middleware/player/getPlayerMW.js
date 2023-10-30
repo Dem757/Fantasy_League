@@ -6,14 +6,22 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    const PlayerModel = requireOption(objectrepository, 'PlayerModel')
+
     return function (req, res, next) {
-        res.locals.teamplayer = {
-            _id: '0',
-            name: 'Szoboszlai Dominik',
-            position: 'CM',
-            nation: 'Magyar',
-            number: '8'
-        };
-        next();
+        PlayerModel.findOne({_id: req.params.playerid})
+            .then(player => {
+                if (!player) {
+                    const error = new Error('Player not found');
+                    error.status = 404;
+                    return Promise.reject(error);
+                }
+
+                res.locals.teamplayer = player;
+                return next();
+            })
+            .catch(error => {
+                return next(error);
+            });
     };
 };
