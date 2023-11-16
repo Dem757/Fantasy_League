@@ -16,13 +16,14 @@
                     </thead>
                     <tbody class="table-group-divider">
                     <% teams.forEach(function(oneTeam) { %>
-                        <tr onclick="window.location='/team/<%= oneTeam._id %>'" >
-                            <td><%= oneTeam.name %></td>
-                            <td><%= oneTeam.league %></td>
-                            <td><%= oneTeam.nation %></td>
+                        <tr>
+                            <td onclick="window.location='/team/<%= oneTeam._id %>'"><%= oneTeam.name %></td>
+                            <td onclick="window.location='/team/<%= oneTeam._id %>'"><%= oneTeam.league %></td>
+                            <td onclick="window.location='/team/<%= oneTeam._id %>'"><%= oneTeam.nation %></td>
                             <td class="text-center">
                                 <a href="/edit/<%= oneTeam._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                                <a href="/del/<%= oneTeam._id %>"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                                <a data-bs-target="#deleteModal" data-bs-toggle="modal"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                                <%- include('confirm_delete', {teamid: oneTeam._id, delete_type: 'team'}) -%>
                             </td>
                         </tr>
                     <% }); %>

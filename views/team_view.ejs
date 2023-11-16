@@ -24,7 +24,8 @@
                         <td><%= onePlayer.number %></td>
                         <td>
                             <a href="/team/<%= team._id %>/edit/<%= onePlayer._id %>"><i class="fa-regular fa-pen-to-square" style="color: black"></i></a>
-                            <a href="/team/<%= team._id %>/del/<%= onePlayer._id %>"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                            <a data-bs-target="#deleteModal" data-bs-toggle="modal"><i class="fa-solid fa-trash" style="color: black"></i></a>
+                            <%- include('confirm_delete', {teamid: team._id, playerid: onePlayer._id, delete_type: 'player'}) -%>
                         </td>
                     </tr>
                 <% }); %>

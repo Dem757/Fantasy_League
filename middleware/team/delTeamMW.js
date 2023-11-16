@@ -7,9 +7,13 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     const TeamModel = requireOption(objectrepository, 'TeamModel');
+    const PlayerModel = requireOption(objectrepository, 'PlayerModel')
 
     return function (req, res, next) {
-        TeamModel.deleteOne({ _id: req.params.teamid })
+        PlayerModel.deleteMany({ _team: req.params.teamid })
+            .then(() => {
+                return TeamModel.deleteOne({ _id: req.params.teamid });
+            })
             .then(result => {
                 if (result.deletedCount === 0) {
                     const error = new Error('Team not found');

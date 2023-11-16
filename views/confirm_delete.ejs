@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Törlés megerősítése</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Az adatok törlése után nem lesznek helyreállíthatóak.
+                <br />
+                Biztosan szeretnéd törölni?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                <% if(delete_type === 'team') { %>
+                    <a href="/del/<%= teamid %>"><button type="button" class="btn btn-danger">Törlés</button></a>
+                    <% } %>
+                <% if(delete_type === 'player') { %>
+                    <a href="/team/<%= teamid %>/del/<%= playerid %>"><button type="button" class="btn btn-danger">Törlés</button></a>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+</div>
